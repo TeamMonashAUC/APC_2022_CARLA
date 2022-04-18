@@ -26,7 +26,7 @@ class Control: # Control class for modular code
 
 		# Main parameters
 		self.poll_period = 0.2 # Period of calling callback() function
-		self.config = 1 # Goal sequence configuration
+		self.config = 4 # Goal sequence configuration
 
 		# Initialize method attributes (variables global to class)
 		self.car_x = self.car_y = self.car_z = self.yaw = self.v_x = self.v_y = self.v_z = self.t_poll = self.t_tot = self.t0 = self.throttle = self.steering = self.prev_gas = self.stop_cal_t = 0
