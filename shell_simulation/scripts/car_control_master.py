@@ -160,7 +160,7 @@ class Control: # Control class for modular code
 			# Define goal coordinates in map frame (set in msg.header)
 			self.goal_map = PoseStamped()
 			self.goal_map.header = msg.header
-			self.goal_map.pose.position.x = self.goal_x
+			self.goal_map.pose.position.x = sepy.init_node('lf.goal_x
 			self.goal_map.pose.position.y = self.goal_y
 
 			# timer
