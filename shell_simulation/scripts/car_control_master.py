@@ -85,7 +85,7 @@ class Control: # Control class for modular code
 		# Steering control
 		if car_speed > 1 and (self.stop_cal_t <= 10 or (self.stop_cal_t - 10) % 10 == 0): # Settling time = 10 x poll_period
 
-			a = math.atan2(output.pose.position.y,output.pose.position.x)  # alpha
+			a = math.atan2(output.pose.positioncontrol.odom.y,output.pose.position.x)  # alpha
 			omega = 1 * a # Scalar constant to define angular velocity omega
 			if self.goal_type == 12:  #sharp corner turn
 				omega = 2.5 * a
@@ -305,7 +305,7 @@ class Control: # Control class for modular code
 				[-15.45,194.16],		#14
 				[-8.4,191.4],[-4.3,187.3],[-3.2, 182.4], [-3.5, 172.6],[-4.4, 124.7],#modified 9
 				
-				[-4.32,110.51] 		#15s
+				[-4.32,110.51] 		#15
 				
 				
 				]
@@ -425,7 +425,7 @@ def listener():
 	# Initialize nodelets and get goals
 	control = Control()
 	rospy.Subscriber("/carla/ego_vehicle/odometry", Odometry, control.odom)
-	rospy.Subscriber("/carla/ego_vehicle/collision", CarlaCollisionEvent, control.collision_handler)
+	#rospy.Subscriber("/carla/ego_vehicle/collision", CarlaCollisionEvent, control.collision_handler)
 	rospy.loginfo("Initialized control node")
 	control.getGoals()
 
