@@ -70,7 +70,6 @@ class Control: # Control class for modular code
 			except:
 				rospy.sleep(0.001)
 				continue
-		
 
 		# Calculate velocity as a magnitude of cartesian vectors
 		car_speed = math.sqrt(math.pow(self.v_x, 2) + math.pow(self.v_y, 2) + math.pow(self.v_z, 2))
@@ -126,6 +125,7 @@ class Control: # Control class for modular code
 		if abs(self.steering) > 0.6: # Limit max steering
 			self.steering = 0.6*abs(self.steering) / self.steering
 		rospy.loginfo("Collsion is %s", self.crash)
+
 		if self.crash == True or self.recover == True: ########## PROTOCOLS FOR CRASHING ###########
 			self.gear = "reverse"
 			self.throttle = 0.5
@@ -195,6 +195,7 @@ class Control: # Control class for modular code
 	def collision_handler(self, msg):
 		self.crash = True
 		rospy.loginfo("Collsion detected, COLLISION PROTOCOL starting")
+
 	# Class method that gets called when odometry message is published to /odom by the AirSim-ROS wrapper, and passed to msg variable
 	def odom(self, msg):
 		if not self.end: # Perform operations while end condition is not true
@@ -268,6 +269,7 @@ class Control: # Control class for modular code
         #   4 - actual goal in the competition, its control is same as goal type 0
         #   5 - 3-point D
         #   7 - last goal, need to fully stop
+
         # Moving backward
         #   6 - straight goal
         #   8 - goal before corner
@@ -279,6 +281,7 @@ class Control: # Control class for modular code
 		#   12 - sharp corner turn
 		#   13 - sharp sharp corner turn
 		#   14 - sharp sharp sharp corner turn
+	
 		# Allocate goals array based on defined config at class declaration
 		if self.config == 1:
 			# Config 1 - CARLA simple throttle, turn and stop
@@ -287,8 +290,6 @@ class Control: # Control class for modular code
 			self.pose_types = [0,7] 
 		elif self.config == 2:
 			# Config 2 - Efficiency (< Distance, < Time), (~1520 m, ~162s)
-
-
 			self.pose_seq = [
 				[-77.9,-17.59],
 				
@@ -356,7 +357,6 @@ class Control: # Control class for modular code
 				
 				]
 			
-			
 			self.pose_types = [
 				0,
 				
@@ -419,9 +419,6 @@ class Control: # Control class for modular code
 				
 				7		#15
 			] # 1-11
-
-
-
 
 		elif self.config == 3:
 			# ze xin trial
