@@ -296,7 +296,29 @@ class Control: # Control class for modular code
 			self.pose_types = [0,7] 
 		elif self.config == 2:
 			# Config 2 - Efficiency (< Distance, < Time), (~1520 m, ~162s)
+			
+			'''
+			Jon : "The coordinates and pose_types I changed. The format is the same (the arrangement of the coordinates and types)"
+			self.pose_seq = [
+				[-75,40],[-75,115],
+				[-73.5,170.8], [-72.8, 178.9],[-67.9,187.3],[-47.8,194.9],
+				
+				[-15.45,194.16],		#14
+				[-9.7, 194.2],[-4.4, 190.9],[-3.2, 187.7], [-3.2, 182.4], [-3.5, 172.6],[-4.4, 124.7],#modified 9
 
+				[-4.32,110.51] 		#15s
+			]
+
+			self.pose_types = [
+				0,0,
+				1,2,4,3,
+				
+				4,		#14 #modified 2
+				13, 13, 13, 4, 3, 0,	#modified 9
+				
+				7
+			]
+			'''
 
 			self.pose_seq = [
 				[-77.9,-17.59],
@@ -352,23 +374,18 @@ class Control: # Control class for modular code
 
 				[-101.1,-0.6],[-84.9,1.7],[-77.8,11.5], 
 				[-77.86,16.80], 	#13
-						
 
+				# READ HERE! ITS JON'S CODE \/ for PART A		
+				# Jon: Changed from the line below this {LINE 379} until final goal (goal 15) {LINE 385}
 				[-75,40],[-75,115],
-				[-73.5,170.8],[-67.9,187.3],[-47.8,194.9],
-				
-				# [-15.45,194.16],		#14
-				# [-8.4,191.4],[-4.3,187.3],[-3.2, 182.4], [-3.5, 172.6],[-4.4, 124.7],#modified 9
-				[-45, 195.2], #14
-				[-12,194.1], [-3.7, 184.3],
-				[-3.8, 174.8], [-4.5, 126.1], 
-				#[-5.3, 93.8],
-
+				[-73.5,170.8], [-72.8, 178.9],[-67.9,187.3],[-47.8,194.9],
+					
+				[-15.45,194.16],		#14
+				[-9.7, 194.2],[-4.4, 190.9],[-3.2, 187.7], [-3.2, 182.4], [-3.5, 172.6],[-4.4, 124.7],#modified 9
 
 				[-4.32,110.51] 		#15s
 				
-				
-				]
+			]
 			
 			
 			self.pose_types = [
@@ -426,16 +443,13 @@ class Control: # Control class for modular code
 				4, 		#13
 				
 				0,0,
-				1,2,3,
+				1,2,4,3,
 				
-				# 13,		#14 #modified 2
-				# 13,13,3,0,1 ,	#modified 9
-				0,
-				1,12,
-				3,1,
+				4,		#14 #modified 2
+				13, 13, 13, 4, 3, 0,	#modified 9
 				
-				7		#15
-				] # 1-11
+				7
+			] # 1-11
 
 
 
